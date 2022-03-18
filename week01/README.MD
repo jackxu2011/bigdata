@@ -15,7 +15,7 @@ mvn clean install
 
 方法有三个参数
 
-1. jar-path: 上传的week-one-1.0.0-SNAPSHOT.jar包路径
+1. jar-path: 上传的week01-1.0.0-SNAPSHOT.jar包路径
 2. input-path: 要计算的数据文件所在文件夹
 3. midout-path: 计算中间数据的存放文件夹
 4. output-path: 最终结果数据的存放文件夹

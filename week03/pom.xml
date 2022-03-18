@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>week-two</artifactId>
+    <artifactId>week03</artifactId>
 
     <properties>
 

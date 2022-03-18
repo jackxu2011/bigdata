@@ -1,4 +1,4 @@
-package me.xuling.geek.bigdata.weekone;
+package me.xuling.geek.bigdata.week01;
 
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
