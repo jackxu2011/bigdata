@@ -32,6 +32,7 @@ with serdeproperties('field.delim'='::')
 LOCATION '/data/hive/movies';
 
 select age, avg(rate) avgrate from t_user u join t_rating r on u.user_id = r.user_id
+where movie_id = 2116
 group by age;
 
 select movie_name, avg(rate) avgrate, count(*) total
