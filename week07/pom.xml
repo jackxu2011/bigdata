@@ -11,21 +11,30 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>week02</artifactId>
+    <artifactId>week07</artifactId>
 
     <properties>
-
+        <spark.deps.scope>provided</spark.deps.scope>
     </properties>
 
     <dependencies>
+
         <dependency>
-            <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase-client</artifactId>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_${scala.binary.version}</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-auth</artifactId>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_${scala.binary.version}</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.scopt</groupId>
+            <artifactId>scopt_${scala.binary.version}</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+
+        <!-- log lib -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-1.2-api</artifactId>
@@ -46,6 +55,10 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <executions>
@@ -55,12 +68,11 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <!-- main()所在的类，注意修改 -->
-                                    <mainClass>me.xuling.geek.bigdata.week02.HbaseUtils</mainClass>
-                                </transformer>
-                            </transformers>
+<!--                            <transformers>-->
+<!--                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
+<!--                                    <mainClass>me.xuling.geek.bigdata.week02.HbaseUtils</mainClass>-->
+<!--                                </transformer>-->
+<!--                            </transformers>-->
                         </configuration>
                     </execution>
                 </executions>
