@@ -17,7 +17,7 @@ object InvertedIndex02 {
       .appName("InvertedIndex")
       .getOrCreate()
     val files = spark.sparkContext.wholeTextFiles(args(0))
-    val fileInput = files.map { x => (x._1.split("/").reverse.apply(0), x._2) }
+    val fileInput = files.map { x => (x._1.split("/").takeRight(1), x._2) }
     val words = fileInput.flatMap { f =>
       val lines = f._2.split("\n");
       lines.flatMap{line => line.split("\\s+").map{
