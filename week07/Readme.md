@@ -8,19 +8,19 @@ input files in resources input file
 我们就能得到下面的反向文件索引：
 运行： InvertedIndex
 ```
-a:Set(03.txt)
-banana:Set(03.txt)
-is:Set(03.txt, 02.txt, 01.txt)
-it:Set(03.txt, 02.txt, 01.txt)
-what:Set(02.txt, 01.txt)
+a:{03.txt}
+banana:{03.txt}
+is:{02.txt, 01.txt, 03.txt}
+it:{02.txt, 01.txt, 03.txt}
+what:{01.txt, 02.txt}
 ```
 运行 InvertedIndex02
 ```
-a:Set((03.txt,1))
-banana:Set((03.txt,1))
-is:Set((03.txt,1), (01.txt,2), (02.txt,1))
-it:Set((03.txt,1), (01.txt,2), (02.txt,1))
-what:Set((01.txt,1), (02.txt,1))
+a:{(03.txt,1)}
+banana:{(03.txt,1)}
+is:{(02.txt,1), (01.txt,2), (03.txt,1)}
+it:{(02.txt,1), (01.txt,2), (03.txt,1)}
+what:{(01.txt,1), (02.txt,1)}
 ```
 
 ## 作业二， modify from the repo

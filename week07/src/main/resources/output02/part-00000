@@ -1,5 +1,5 @@
-(a,Set((03.txt,1)))
-(banana,Set((03.txt,1)))
-(is,Set((03.txt,1), (01.txt,2), (02.txt,1)))
-(it,Set((03.txt,1), (01.txt,2), (02.txt,1)))
-(what,Set((01.txt,1), (02.txt,1)))
+a:{(03.txt,1)}
+banana:{(03.txt,1)}
+is:{(02.txt,1), (01.txt,2), (03.txt,1)}
+it:{(02.txt,1), (01.txt,2), (03.txt,1)}
+what:{(01.txt,1), (02.txt,1)}
