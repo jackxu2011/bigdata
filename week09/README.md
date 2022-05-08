@@ -11,8 +11,6 @@ VERSION : 'VERSION';
 ```scala
 package org.apache.spark.sql.execution.command
 
-import org.apache.spark
-
 import org.apache.spark.sql.{Row, SparkSession}
 import org.apache.spark.sql.catalyst.plans.logical.IgnoreCachedData
 
@@ -22,13 +20,17 @@ import org.apache.spark.sql.catalyst.plans.logical.IgnoreCachedData
  */
 case class ShowVersionCommand() extends LeafRunnableCommand with IgnoreCachedData {
 
+  //返回数据的structType在这里指定
+  override def output: Seq[Attribute] = Seq(AttributeReference("version", StringType)())
+
   override def run(sparkSession: SparkSession): Seq[Row] = {
     val javaVersion = System.getProperty("java.version")
     // scalastyle:off println
     println(s"java version: $javaVersion")
-    println(s"spark version: ${spark.SPARK_VERSION}")
+    println(s"spark version: ${sparkSession.version}")
     // scalastyle:on println
-    Seq.empty[Row]
+    val output = "Spark Version: %s, Java Version: %s".format(sparkSession.version, javaVersion);
+    Seq(Row(output))
   }
 
 }
@@ -43,17 +45,31 @@ case class ShowVersionCommand() extends LeafRunnableCommand with IgnoreCachedDat
     ShowVersionCommand()
   }
 ```
-3. 运行./bin/spark-shell 执行
+4. 编译代码
+需要增加`-Phive-thriftserver` 参数，否则无法运行 spark-sql
 
+```shell
+ mvn clean package -DskipTests -Phive-thriftserver
+```
+5. 运行./bin/spark-sql 执行
+
+```shell
+spark-sql> show version;
+java version: 1.8.0_333
+spark version: 3.2.1
+Spark Version: 3.2.1, Java Version: 1.8.0_333
+Time taken: 0.023 seconds, Fetched 1 row(s)
+```
+* 也可以通过./bin/spark-shell 执行
 ```shell
 scala> spark.sql("show version").show
 java version: 1.8.0_333
 spark version: 3.2.1
-++
-||
-++
-++
-
++--------------------+
+|             version|
++--------------------+
+|Spark Version: 3....|
++--------------------+
 ```
 
 ## 作业二
